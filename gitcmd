@@ -1,0 +1,6 @@
+git init -b 25-jun-ramiz
+git add .
+git commit -m "Working on driver tracking" 
+git remote add origin https://github.com/HCS-Dev-Projects/ThriveBlackCarCRM-Backend
+git remote -v     
+git push origin HEAD:25-jun-ramiz

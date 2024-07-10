@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .common-table {
+            text-align: center;
+            width: 100%;
+            border-spacing: 0;
+        }
+        .common-table tbody>tr:nth-child(even) {
+            background-color: #F7F8F9;
+        }
+        th,
+        td {
+            vertical-align: center;
+        }
+        .common-table th,
+        .common-table td {
+            padding: 9px 5px;
+        }
+        .common-table th {
+            border-bottom: 1px solid #C9C9C9;
+            border-top: 1px solid #C9C9C9;
+        }
+        .common-table tfoot td {
+            font-weight: 700;
+        }
+        .common-table tr {
+            break-inside: avoid;
+        }
+        .icon {
+            width: 12px;
+            margin-right: 12px;
+        }
+        .total-item-table tbody tr:last-child td {
+            padding-bottom: 20px !important;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit</title>
+</head>
+
+<body style="font-size: 10px;font-family: 'Open Sans', sans-serif;">
+    <hr style="margin: 0;height: 3px;background-color: #c6c6c6;border: none;">
+    <h2 style="font-size:18px;text-align: center;">Pickup on {{pickupDate}} at {{pickupTime}}</h2>
+    <div>
+        <p style="font-weight:medium;justify-content: space-between; font-size: 14px;">"We are sincerely thankful for
+            the opportunity to be your premier chauffeur provider, catering to both your
+            pick-up and drop-off needs. You can expect one of our skilled dispatcher to contact you 24 hours before your
+            scheduled pickup, ensuring everything is arranged to perfection. Should you ever need to cancel your
+            reservation within 24 hours before the pick-up time, you can simply reach out to our customer service
+            through a call or email, and you'll receive a full refund. Thank you for choosing Thrive Black; we look
+            forward to serving you!"</p>
+    </div>
+    <table width="100%" style="margin-bottom: 20px;font-size:12px;" cellspacing="1">
+        <thead style="text-align: left;">
+            <tr>
+                <th style="border-top: 1px solid #d5d5d5;line-height:35px;"><b>Customer</b></th>
+                <th style="border-top: 1px solid #d5d5d5;line-height:35px;font-weight: medium;"><b>Invoice Details</b></th>
+                <th style="border-top: 1px solid #d5d5d5;line-height:35px;font-weight: medium;"><b>Payment</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="font-size: 12px;">
+                <td style="vertical-align: top; ">{{firstName}} {{lastName}} <br> {{phoneNumber}}</td>
+                <td style="vertical-align: top;">PDF created {{getCurrentDate}} <br> - <br> Service date
+                    {{pickupDate}}</td>
+                <td style="vertical-align: top;">{{getCurrentDate}} <br> -</td>
+            </tr>
+        </tbody>
+    </table>
+    <table width="100%" cellspacing="0">
+        <thead>
+            <tr style="text-align: left;">
+                <th width="20%" style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;"><span
+                        style="line-height:40px;"> Items</span></th>
+                <th width="20%"
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 12px 0;text-align: right;line-height:40px;">
+                    <span style="line-height:40px;">Quantity</span></th>
+                <th width="20%"
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 12px 0;text-align: right;line-height:40px;">
+                    <span style="line-height:40px;">Price</span></th>
+                <th width="20%"
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 12px 0;text-align: right;line-height:40px;">
+                    <span style="line-height:40px;">Amount</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 5px 0; vertical-align: top; font-style: italic; color: #8c8c8c;">
+                    <br><br>
+                    Pickup on {{pickupDate}} at {{pickupTime}} <br>
+                    {{fromLocationName}}<br>
+                    To {{toLocationName}}
+                    <br><br>
+                    {{#if homeTabExists}}
+                    By-Transfer
+                    {{else}}
+                    By Hours -{{hour}}
+                    {{/if}}
+                    <br><br>
+                    {{#if flightNumber}}
+                    Flight Number: {{flightNumber}}
+                    {{else}}
+                    Flight N/A
+                    {{/if}}
+                    <br>
+                    {{#if returDate}}
+                    Return Date: {{returDate}}<br>
+                    {{/if}}
+                    {{#if returnTime}}
+                    Return Time: {{returnTime}}<br>
+                    {{/if}}
+                    {{#if returnFlight}}
+                    Return Flight: {{returnFlight}}<br>
+                    {{/if}}
+                    <br>
+                    {{#if isPassenger}}
+                    I am the passenger
+                    {{else}}
+                    I am Booking for someone else
+                    {{#if passName}}
+                    <br>Name: {{passName}}
+                    {{/if}}
+                    {{#if passPhone}}
+                    <br>Phone: {{passPhone}}
+                    {{/if}}
+                    {{/if}}
+                    <br><br>Car Type: {{Car_type}}
+                </td>                                         
+                <td width="20%" style="padding: 5px 0;text-align: right;vertical-align: top;">
+                    <br><br>1
+                </td>
+                <td width="20%" style="padding: 5px 0;text-align: right;vertical-align: top;">
+                    <br><br>-
+                </td>
+                <td width="20%" style="padding: 5px 0;text-align: right;vertical-align: top;">
+                    <br><br>-
+                </td>
+            </tr>
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 5px 0; vertical-align: top; color: #878787;color: #8c8c8c;">No. Passenger</td>
+                <td width="20%" style="padding: 5px 0; text-align: right; vertical-align: top;">{{passenger}}<br></td>
+                <td width="20%" style="padding: 5px 0; text-align: right; vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 5px 0; text-align: right; vertical-align: top;"></td>
+            </tr>
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 12px 0; vertical-align: top; color: #878787;color: #8c8c8c;">No. Luggage</td>
+                <td width="20%" style="padding: 12px 0; text-align: right; vertical-align: top;">{{luggage}} <br></td>
+                <td width="20%" style="padding: 12px 0; text-align: right; vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0; text-align: right; vertical-align: top;"></td>
+            </tr>
+            {{#if meetAndGreet}}
+            <tr style="font-size: 13px;">
+              <td width="40%" style="padding: 12px 0;vertical-align: top;color: #878787;color: #8c8c8c;">Greet</td>
+              <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+              <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+              <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">-<br></td>
+            </tr>
+          {{/if}}                   
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 12px 0;vertical-align: top;color: #878787;color: #8c8c8c;">Gratuity</td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">-<br></td>
+            </tr>
+            {{#if surgecharges}}
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 12px 0;vertical-align: top;color: #878787;color: #8c8c8c;">Event Surge
+                </td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">-<br></td>
+            </tr>
+            {{/if}}
+            {{#if timesurgecharge}}
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 12px 0;vertical-align: top;color: #878787;color: #8c8c8c;">Early Morning and Late Night Surge
+                </td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">-<br></td>
+            </tr>
+            {{/if}}
+            <tr style="font-size: 13px;">
+                <td width="40%" style="padding: 12px 0;vertical-align: top;color: #878787;color: #8c8c8c;">Taxes</td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">- <br></td>
+                <td width="20%" style="padding: 12px 0;text-align: right;vertical-align: top;">-<br></td>
+            </tr>
+            {{#if showPromoRow}}
+            <tr style="font-size: 13px;">
+              <td width="40%" style="padding: 12px 0; vertical-align: top; color: #878787; color: #8c8c8c;">Promo Code ({{PromoCode}})
+              </td>
+              <td width="20%" style="padding: 12px 0; text-align: right; vertical-align: top;">- <br></td>
+              <td width="20%" style="padding: 12px 0; text-align: right; vertical-align: top;">- <br></td>
+              <td width="20%" style="padding: 12px 0; text-align: right; vertical-align: top;">-<br></td>
+            </tr>
+          {{/if}}                  
+        </tbody>
+        <tfoot>
+            <tr style="font-size: 13px;">
+                <td style="padding: 12px 0;font-size: 20px;font-weight: 600;line-height:50px;">Total</td>
+                <td style="padding: 12px 0;"></td>
+                <td style="padding: 12px 0;"></td>
+                <td style="padding: 12px 0;text-align: right;font-size: 20px;font-weight: 600;line-height:50px;"> - </td>
+            </tr>
+        </tfoot>
+        <tfoot>
+            <tr style="font-size: 13px;">
+                <td
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 4px 0;line-height:40px;">
+                    Subtotal</td>
+                <td
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 4px 0;line-height:40px;">
+                </td>
+                <td
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 4px 0;line-height:40px;">
+                </td>
+                <td
+                    style="border-top: 1px solid #d5d5d5;border-bottom: 1px solid #d5d5d5;padding: 4px 0;text-align: right;line-height:40px;">
+                    - </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
